@@ -1,0 +1,20 @@
+http:
+  routers:
+    nextcloud:
+      entryPoints:
+      - http
+      service: "nextcloud"
+      rule: "Host(`nc.qq.com`)"
+      middlewares:
+      - nextcloud
+  middlewares:
+    nextcloud:
+      headers:
+        customRequestHeaders:
+          host: nc.oopsapi.com
+  services:
+     nextcloud:
+       loadBalancer:
+         servers:
+         - url: http://127.0.0.1:38080
+

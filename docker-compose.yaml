@@ -1,0 +1,9 @@
+version: '2'
+services:
+  traefik:
+    image: traefik
+    container_name: traefik
+    volumes:
+      - ./traefik:/etc/traefik
+    network_mode: host
+    restart: unless-stopped
